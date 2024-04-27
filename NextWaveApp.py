@@ -39,7 +39,7 @@ if uploaded_file is not None:
         return processed_text
 
     # Apply preprocessing to the review text
-    data['cleaned_text'] = data['reviewText'].apply(preprocess_text)
+    data['cleaned_text'] = data['text'].apply(preprocess_text)
 
     # Allow user to input ASIN code
     selected_product = st.text_input('Search for a product by ASIN number')
