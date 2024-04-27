@@ -55,12 +55,7 @@ if uploaded_file is not None:
             sia = SentimentIntensityAnalyzer()
             filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
             
-            # Generate and display WordCloud
-            wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
-            plt.figure(figsize=(10, 5))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
+    
             
             # Calculate average rating
             average_rating = filtered_data['rating'].mean()
@@ -80,3 +75,9 @@ if uploaded_file is not None:
             st.write(f"Average Rating: {average_rating:.2f}")
         else:
             st.write("Product not found. Please try again.")
+        # Generate and display WordCloud
+            wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
+            plt.figure(figsize=(10, 5))
+            plt.imshow(wordcloud, interpolation='bilinear')
+            plt.axis('off')
+            st.pyplot(plt)
