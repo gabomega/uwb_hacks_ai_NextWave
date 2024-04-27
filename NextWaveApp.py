@@ -48,7 +48,7 @@ uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='j
 if uploaded_file is not None:
     
     def read_jsonl(file):
-    data = read_jsonl(uploaded_file)
+        data = read_jsonl(uploaded_file)
 
 
 
