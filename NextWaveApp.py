@@ -72,9 +72,9 @@ if uploaded_file is not None:
             positive_count = (filtered_data['sentiments'] > 0).sum()
             negative_count = (filtered_data['sentiments'] < 0).sum()
             if positive_count > negative_count:
-                sentiment_summary = "Mostly Positive"
+                sentiment_summary = "Positive"
             elif negative_count > positive_count:
-                sentiment_summary = "Mostly Negative"
+                sentiment_summary = "Negative"
             else:
                 sentiment_summary = "Mixed"
 
