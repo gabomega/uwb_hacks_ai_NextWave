@@ -14,6 +14,7 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
+uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
 # Function to preprocess text
 def preprocess_text(text):
     # Tokenize the text
