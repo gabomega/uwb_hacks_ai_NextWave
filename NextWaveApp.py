@@ -80,7 +80,7 @@ if uploaded_file is not None:
             
             # Display summary
             st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
-            st.write(f"<h3 style='color:black; font-size:24px; padding-bottom: 20px; margin-bottom: 20px;'>Average Rating for {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
+            st.write(f"<h3 style='color:black; font-size:24px; padding-bottom: 20px; margin-bottom: 20px;'>Average Rating for Product {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
             st.write(f"<h3 style='color:black; font-size:24px;'>Here is the Word Cloud summary of your customer experience:</h3>", unsafe_allow_html=True)
             # Generate and display WordCloud
             wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
