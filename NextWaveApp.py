@@ -55,8 +55,8 @@ if uploaded_file is not None:
             sia = SentimentIntensityAnalyzer()
             filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
             
+     
     
-            
             # Calculate average rating
             average_rating = filtered_data['rating'].mean()
 
@@ -74,11 +74,12 @@ if uploaded_file is not None:
             st.markdown(f"<h3 style='color:{sentiment_color}; font-size:24px;'>Your customer feedback Summary (Sentiment): {sentiment_summary}</h3>", unsafe_allow_html=True)
             #st.write(f"Your customer feedback overall is {sentiment_summary}")
             st.write(f"Average Rating for {selected_product} : {average_rating:.2f}")
-        else:
-            st.write("Product not found. Please try again.")
-        # Generate and display WordCloud
+                   # Generate and display WordCloud
             wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
             plt.figure(figsize=(10, 5))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
             st.pyplot(plt)
+        else:
+            st.write("Product not found. Please try again.")
+
