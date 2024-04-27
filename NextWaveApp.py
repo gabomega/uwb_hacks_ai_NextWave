@@ -19,7 +19,7 @@ nltk.download('wordnet')
 st.title('Welcome to NextWave')
 
 # Upload functionality
-uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
+uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
 
 # Check if file is uploaded
 if uploaded_file is not None:
