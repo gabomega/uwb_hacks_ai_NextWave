@@ -2,18 +2,10 @@ import streamlit as st
 import pandas as pd
 import json
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-from nltk.stem import WordNetLemmatizer
-from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
-from wordcloud import WordCloud
-import matplotlib.pyplot as plt
-import nltk
+import numpy as np
 
 # Download necessary NLTK resources
 nltk.download('vader_lexicon')
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
 
 # Streamlit UI setup
 st.title('Welcome to NextWave')
@@ -39,31 +31,25 @@ if uploaded_file is not None:
             # Display selected product information
             st.write(f"Selected product: {selected_product}")
 
-            # Function to preprocess text and filter out the word "magazine"
-            def preprocess_text(text):
-                tokens = word_tokenize(text.lower())
-                filtered_tokens = [token for token in tokens if token not in stopwords.words('english') and token != 'magazine']
-                lemmatizer = WordNetLemmatizer()
-                lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
-                processed_text = ' '.join(lemmatized_tokens)
-                return processed_text
-
-            # Apply preprocessing to the review text
-            filtered_data['cleaned_text'] = filtered_data['text'].apply(preprocess_text)
-
             # Sentiment analysis
             sia = SentimentIntensityAnalyzer()
-            filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
+            filtered_data['sentiments'] = filtered_data['text'].apply(lambda x: sia.polarity_scores(x)['compound'])
 
-            # Generate and display WordCloud
-            wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
-            plt.figure(figsize=(10, 5))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
+            # Calculate average rating
+            average_rating = filtered_data['rating'].mean()
 
-            # Display sentiment statistics
-            st.write(filtered_data['sentiments'].describe())
+            # Determine if reviews are mostly positive or negative
+            positive_count = (filtered_data['sentiments'] > 0).sum()
+            negative_count = (filtered_data['sentiments'] < 0).sum()
+            if positive_count > negative_count:
+                sentiment_summary = "Mostly Positive"
+            elif negative_count > positive_count:
+                sentiment_summary = "Mostly Negative"
+            else:
+                sentiment_summary = "Mixed"
+
+            # Display summary
+            st.write(f"Sentiment Summary: {sentiment_summary}")
+            st.write(f"Average Rating: {average_rating:.2f}")
         else:
             st.write("Product not found. Please try again.")
-
