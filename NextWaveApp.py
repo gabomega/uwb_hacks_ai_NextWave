@@ -20,52 +20,46 @@ st.title('Welcome to NextWave')
 
 # Upload functionality
 uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
-if uploaded_file is not None:
-    # Function to read jsonl file
-    def read_jsonl(file):
-        # Read the JSONL file and convert to DataFrame
-        return pd.DataFrame([json.loads(line) for line in file])
 
+# Check if file is uploaded
+if uploaded_file is not None:
     # Read data
-    data = read_jsonl(uploaded_file)
+    data = pd.DataFrame([json.loads(line) for line in uploaded_file])
 
-    # Function to preprocess text
-    def preprocess_text(text):
-        # Tokenize the text
-        tokens = word_tokenize(text.lower())
-        # Remove stop words
-        filtered_tokens = [token for token in tokens if token not in stopwords.words('english')]
-        # Lemmatize the tokens
-        lemmatizer = WordNetLemmatizer()
-        lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
-        processed_text = ' '.join(lemmatized_tokens)
-        return processed_text
-
-    # Apply preprocessing to the review text
-    data['cleaned_text'] = data['text'].apply(preprocess_text)
-
-    # Sentiment analysis
-    sia = SentimentIntensityAnalyzer()
-    data['sentiments'] = data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
-
-    # Generate and display WordCloud
-    wordcloud = WordCloud(width=800, height=400).generate(' '.join(data['cleaned_text']))
-    plt.figure(figsize=(10, 5))
-    plt.imshow(wordcloud, interpolation='bilinear')
-    plt.axis('off')
-    st.pyplot(plt)
-
-    # Display sentiment statistics
-    st.write(data['sentiments'].describe())
-
-# Allow user to input ASIN code after uploading file and processing data
-if uploaded_file is not None:
+    # Allow user to input ASIN code
     selected_product = st.text_input('Search for a product by ASIN number')
 
-    # Check if the user has entered something and if it matches the available products
+    # Check if the user has entered an ASIN
     if selected_product:
+        # Function to preprocess text
+        def preprocess_text(text):
+            tokens = word_tokenize(text.lower())
+            filtered_tokens = [token for token in tokens if token not in stopwords.words('english')]
+            lemmatizer = WordNetLemmatizer()
+            lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
+            processed_text = ' '.join(lemmatized_tokens)
+            return processed_text
+
+        # Apply preprocessing to the review text
+        data['cleaned_text'] = data['text'].apply(preprocess_text)
+
+        # Sentiment analysis
+        sia = SentimentIntensityAnalyzer()
+        data['sentiments'] = data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
+
+        # Generate and display WordCloud
+        wordcloud = WordCloud(width=800, height=400).generate(' '.join(data['cleaned_text']))
+        plt.figure(figsize=(10, 5))
+        plt.imshow(wordcloud, interpolation='bilinear')
+        plt.axis('off')
+        st.pyplot(plt)
+
+        # Display sentiment statistics
+        st.write(data['sentiments'].describe())
+
+        # Check if ASIN is valid
         if selected_product in data['asin'].unique():
-            # Display the selected product information
+            # Display selected product information
             st.write(f"Selected product: {selected_product}")
         else:
             st.write("Product not found. Please try again.")
