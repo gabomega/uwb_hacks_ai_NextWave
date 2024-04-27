@@ -34,7 +34,7 @@ selected_product = st.text_input('Search for a product by asin number')
 if selected_product:
     if selected_product in data['asin'].unique():
         # Display the selected drug information or analysis here
-        st.write(f"Selected drug: {selected_product}")
+        st.write(f"Selected product: {selected_product}")
     else:
         st.write("Product not found. Please try again.")
     # Function to preprocess text
