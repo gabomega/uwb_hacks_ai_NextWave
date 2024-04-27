@@ -42,7 +42,7 @@ if uploaded_file is not None:
         return processed_text
 
     # Apply preprocessing to the review text
-    data['cleaned_text'] = data['Text'].apply(preprocess_text)
+    data['cleaned_text'] = data['text'].apply(preprocess_text)
 
     # Sentiment analysis
     sia = SentimentIntensityAnalyzer()
