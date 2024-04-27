@@ -2,7 +2,12 @@ import streamlit as st
 import pandas as pd
 import json
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
-import numpy as np
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from wordcloud import WordCloud
+import matplotlib.pyplot as plt
+import nltk
 
 # Download necessary NLTK resources
 nltk.download('vader_lexicon')
