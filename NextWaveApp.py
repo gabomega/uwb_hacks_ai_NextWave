@@ -19,7 +19,10 @@ nltk.download('wordnet')
 st.title('Welcome to NextWave')
 
 # Upload functionality
-uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
+#uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
+st.markdown("<p style='font-size:16px;'>Upload your customer reviews JSONL file</p>", unsafe_allow_html=True)
+uploaded_file = st.file_uploader("", type='jsonl')
+
 
 # Check if file is uploaded
 if uploaded_file is not None:
@@ -27,7 +30,6 @@ if uploaded_file is not None:
     data = pd.DataFrame([json.loads(line) for line in uploaded_file])
     
     # Allow user to input ASIN code
-    #selected_product = st.text_input('Search for a product by ASIN number', style={'font-size': '16px'})
     selected_product = st.text_input('Search for a product by ASIN number')
     
     # Check if the user has entered an ASIN
