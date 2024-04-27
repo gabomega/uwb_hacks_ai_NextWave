@@ -71,9 +71,9 @@ if uploaded_file is not None:
                 sentiment_summary = "Mixed"
 
             # Display summary
-            st.markdown(f"<h3 style='color:{sentiment_color}; font-size:24px;'>Your customer feedback Summary (Sentiment): {sentiment_summary}</h3>", unsafe_allow_html=True)
+            st.subtitle(f"<h3 style='color:{sentiment_color}; font-size:24px;'>Your customer feedback Summary (Sentiment): {sentiment_summary}</h3>", unsafe_allow_html=True)
             #st.write(f"Your customer feedback overall is {sentiment_summary}")
-            st.write(f"Average Rating for {selected_product} : {average_rating:.2f}")
+            st.subtitle(f"Average Rating for {selected_product} : {average_rating:.2f}")
                    # Generate and display WordCloud
             wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
             plt.figure(figsize=(10, 5))
