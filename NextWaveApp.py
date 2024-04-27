@@ -67,7 +67,7 @@ if uploaded_file is not None:
             if positive_count > negative_count:
                 sentiment_summary = "Positive"
                 sentiment_color = "green"
-            elif negative_count > positive_count:
+            elif negative_count >= positive_count:
                 sentiment_summary = "Negative"
                 sentiment_color = "red"
 
