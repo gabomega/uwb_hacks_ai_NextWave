@@ -21,7 +21,7 @@ st.title('Welcome to NextWave')
 # Upload functionality
 #uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
 #st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
-st.markdown(f"<h3 style='font-size:16px;'>Upload your customer reviews JSONL file</h3>", unsafe_allow_html=True)
+st.markdown(f"<h3 style='font-size:20px;'>Upload your customer reviews JSONL file</h3>", unsafe_allow_html=True)
 uploaded_file = st.file_uploader("", type='jsonl')
 
 
