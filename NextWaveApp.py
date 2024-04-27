@@ -31,7 +31,10 @@ if uploaded_file is not None:
     data = pd.DataFrame([json.loads(line) for line in uploaded_file])
     
     # Allow user to input ASIN code
-    selected_product = st.text_input('Search for a product by ASIN number')
+    #selected_product = st.text_input('Search for a product by ASIN number')
+    st.markdown("<p style='font-size:20px;'>Search for a product by ASIN number</p>", unsafe_allow_html=True)
+    selected_product = st.text_input("")
+
     
     # Check if the user has entered an ASIN
     if selected_product:
