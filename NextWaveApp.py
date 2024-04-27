@@ -61,10 +61,7 @@ if uploaded_file is not None:
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
             st.pyplot(plt)
-            # Display sentiment statistics
-            st.write(filtered_data['sentiments'].describe())
-            filtered_data['sentiments'] = filtered_data['text'].apply(lambda x: sia.polarity_scores(x)['compound'])
-
+            
             # Calculate average rating
             average_rating = filtered_data['rating'].mean()
 
