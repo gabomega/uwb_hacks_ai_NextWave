@@ -26,7 +26,7 @@ def preprocess_text(text):
     processed_text = ' '.join(lemmatized_tokens)
     return processed_text
 
-df['cleaned_text'] = df['text'].apply(preprocess_text)
+data['cleaned_text'] = data['text'].apply(preprocess_text)
 
 # Function to perform sentiment analysis
 
