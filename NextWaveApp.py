@@ -21,14 +21,14 @@ st.title('Welcome to NextWave')
 # Upload functionality
 uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
 if uploaded_file is not None:
-    # Function to read jsonl file
+    selected_product = st.text_input('Search for a product by asin number')
     def read_jsonl(file):
         # Read the JSONL file and convert to DataFrame
         return pd.DataFrame([json.loads(line) for line in file])
 
     # Read data
     data = read_jsonl(uploaded_file)
-    selected_product = st.text_input('Search for a product by asin number')
+    
 
 # Check if the user has entered something and if it matches the available drugs
 if selected_product:
