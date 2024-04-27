@@ -31,35 +31,38 @@ if uploaded_file is not None:
 
     # Check if the user has entered an ASIN
     if selected_product:
-        # Function to preprocess text
-        def preprocess_text(text):
-            tokens = word_tokenize(text.lower())
-            filtered_tokens = [token for token in tokens if token not in stopwords.words('english')]
-            lemmatizer = WordNetLemmatizer()
-            lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
-            processed_text = ' '.join(lemmatized_tokens)
-            return processed_text
-
-        # Apply preprocessing to the review text
-        data['cleaned_text'] = data['text'].apply(preprocess_text)
-
-        # Sentiment analysis
-        sia = SentimentIntensityAnalyzer()
-        data['sentiments'] = data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
-
-        # Generate and display WordCloud
-        wordcloud = WordCloud(width=800, height=400).generate(' '.join(data['cleaned_text']))
-        plt.figure(figsize=(10, 5))
-        plt.imshow(wordcloud, interpolation='bilinear')
-        plt.axis('off')
-        st.pyplot(plt)
-
-        # Display sentiment statistics
-        st.write(data['sentiments'].describe())
+        # Filter data based on the entered ASIN
+        filtered_data = data[data['asin'] == selected_product]
 
         # Check if ASIN is valid
-        if selected_product in data['asin'].unique():
+        if not filtered_data.empty:
             # Display selected product information
             st.write(f"Selected product: {selected_product}")
+
+            # Function to preprocess text
+            def preprocess_text(text):
+                tokens = word_tokenize(text.lower())
+                filtered_tokens = [token for token in tokens if token not in stopwords.words('english')]
+                lemmatizer = WordNetLemmatizer()
+                lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
+                processed_text = ' '.join(lemmatized_tokens)
+                return processed_text
+
+            # Apply preprocessing to the review text
+            filtered_data['cleaned_text'] = filtered_data['text'].apply(preprocess_text)
+
+            # Sentiment analysis
+            sia = SentimentIntensityAnalyzer()
+            filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
+
+            # Generate and display WordCloud
+            wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
+            plt.figure(figsize=(10, 5))
+            plt.imshow(wordcloud, interpolation='bilinear')
+            plt.axis('off')
+            st.pyplot(plt)
+
+            # Display sentiment statistics
+            st.write(filtered_data['sentiments'].describe())
         else:
             st.write("Product not found. Please try again.")
