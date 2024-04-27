@@ -14,7 +14,21 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
+# Streamlit UI
+st.title('Welcome to NextWave')
+# Perform sentiment analysis when the user uploads a file
+
 uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
+if uploaded_file is not None:
+    
+    def read_jsonl(file):
+        data = read_jsonl(uploaded_file)
+
+
+
+
+    
+    # Generate word cloud for selected product
 # Function to preprocess text
 def preprocess_text(text):
     # Tokenize the text
@@ -35,27 +49,13 @@ data['cleaned_text'] = data['text'].apply(preprocess_text)
 # Function to generate word cloud for selected product (asin)
 
 
-# Streamlit UI
-st.title('Welcome to NextWave')
+
 
 # File upload option for the user to upload a file containing product reviews
 
 
 
-# Perform sentiment analysis when the user uploads a file
 
-uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
-
-if uploaded_file is not None:
-    
-    def read_jsonl(file):
-        data = read_jsonl(uploaded_file)
-
-
-
-
-    
-    # Generate word cloud for selected product
   
 
 
