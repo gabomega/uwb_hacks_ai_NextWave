@@ -58,7 +58,8 @@ if uploaded_file is not None:
     # Display sentiment statistics
     st.write(data['sentiments'].describe())
 
-    # Allow user to input ASIN code after uploading file
+# Allow user to input ASIN code after uploading file and processing data
+if uploaded_file is not None:
     selected_product = st.text_input('Search for a product by ASIN number')
 
     # Check if the user has entered something and if it matches the available products
