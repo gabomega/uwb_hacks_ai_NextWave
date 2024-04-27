@@ -71,7 +71,7 @@ if uploaded_file is not None:
                 sentiment_summary = "Mixed"
 
             # Display summary
-            st.markdown(f"<h3 style='color:{sentiment_color}; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
+            st.markdown(f"<h3 style='color:{sentiment_color}; font-size:24px;'>Your customer feedback Summary (Sentiment): {sentiment_summary}</h3>", unsafe_allow_html=True)
             #st.write(f"Your customer feedback overall is {sentiment_summary}")
             st.write(f"Average Rating for {selected_product} : {average_rating:.2f}")
         else:
