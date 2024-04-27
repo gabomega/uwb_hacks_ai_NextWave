@@ -58,3 +58,8 @@ if uploaded_file is not None:
             st.write(f"Average Rating: {average_rating:.2f}")
         else:
             st.write("Product not found. Please try again.")
+            wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
+                plt.figure(figsize=(10, 5))
+                plt.imshow(wordcloud, interpolation='bilinear')
+                plt.axis('off')
+                st.pyplot(plt)
