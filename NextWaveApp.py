@@ -21,22 +21,22 @@ st.title('Welcome to NextWave')
 # Upload functionality
 uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
 if uploaded_file is not None:
-    selected_product = st.text_input('Search for a product by asin number')
+    else:
+        st.write("Product not found. Please try again.")
+    
     def read_jsonl(file):
         # Read the JSONL file and convert to DataFrame
         return pd.DataFrame([json.loads(line) for line in file])
 
     # Read data
     data = read_jsonl(uploaded_file)
-    
-
-# Check if the user has entered something and if it matches the available drugs
-if selected_product:
+    selected_product = st.text_input('Search for a product by asin number')if selected_product:
     if selected_product in data['asin'].unique():
         # Display the selected product information
-        st.write(f"Selected product: {selected_product}")
-    else:
-        st.write("Product not found. Please try again.")
+        st.write(f"Selected product: {selected_product}") 
+
+# Check if the user has entered something and if it matches the available drugs
+
     # Function to preprocess text
     def preprocess_text(text):
         # Tokenize the text
