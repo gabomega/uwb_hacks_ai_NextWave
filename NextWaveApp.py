@@ -30,7 +30,7 @@ if uploaded_file is not None:
 
     # Read data
     data = read_jsonl(uploaded_file)
-    selected_product = st.text_input('Search for a product by asin number')if selected_product:
+    selected_product = st.text_input('Search for a product by asin number')
     if selected_product in data['asin'].unique():
         # Display the selected product information
         st.write(f"Selected product: {selected_product}") 
