@@ -71,16 +71,19 @@ if uploaded_file is not None:
             positive_count = (filtered_data['sentiments'] > 0).sum()
             negative_count = (filtered_data['sentiments'] < 0).sum()
             if positive_count > negative_count:
-                sentiment_summary = "Positive"
-                sentiment_color = "green"
+                #sentiment_summary = "Positive"
+                sentiment_summary = "<span style='color:green;'>Positive</span>"
+                "<span style='color:red;'>Negative</span>"
+                sentiment_color = "<span style='color:green;'>Positive</span>"
             elif negative_count >= positive_count:
-                sentiment_summary = "Negative"
+                #sentiment_summary = "Negative"
+                sentiment_summary = "<span style='color:red;'>Negative</span>"
                 sentiment_color = "red"
             
             # Display summary
-            st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
-            #st.write(f"Your customer feedback overall is {sentiment_summary}")
+            st.markdown(f"<h3 style='font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
             st.write(f"<h3 style='color:black; font-size:24px;'>Average Rating for {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
+            
             # Generate and display WordCloud
             wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
             plt.figure(figsize=(10, 5))
