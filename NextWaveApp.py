@@ -69,9 +69,7 @@ if uploaded_file is not None:
             elif negative_count > positive_count:
                 sentiment_summary = "Negative"
                 sentiment_color = "red"
-            else:
-                sentiment_summary = "Mixed"
-                sentiment_color = "blue"
+
 
             # Display summary
             st.markdown(f"<h3 style='color:{sentiment_color}; font-size:24px;'>Your customer feedback Summary (Sentiment): {sentiment_summary}</h3>", unsafe_allow_html=True)
