@@ -73,12 +73,11 @@ if uploaded_file is not None:
             if positive_count > negative_count:
                 #sentiment_summary = "Positive"
                 sentiment_summary = "<span style='color:green;'>Positive</span>"
-                "<span style='color:red;'>Negative</span>"
-                sentiment_color = "<span style='color:green;'>Positive</span>"
+                #sentiment_color = "<span style='color:green;'>Positive</span>"
             elif negative_count >= positive_count:
                 #sentiment_summary = "Negative"
                 sentiment_summary = "<span style='color:red;'>Negative</span>"
-                sentiment_color = "red"
+                #sentiment_color = "red"
             
             # Display summary
             st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
