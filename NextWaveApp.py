@@ -76,16 +76,17 @@ if uploaded_file is not None:
             elif negative_count >= positive_count:
                 sentiment_summary = "Negative"
                 sentiment_color = "red"
-
+            
             # Display summary
             st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
             #st.write(f"Your customer feedback overall is {sentiment_summary}")
             st.write(f"<h3 style='color:black; font-size:24px;'>Average Rating for {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
-        else:
-            st.write("Product not found. Please try again.")
-        # Generate and display WordCloud
+            # Generate and display WordCloud
             wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
             plt.figure(figsize=(10, 5))
             plt.imshow(wordcloud, interpolation='bilinear')
             plt.axis('off')
             st.pyplot(plt)
+        else:
+            st.write("Product not found. Please try again.")
+
