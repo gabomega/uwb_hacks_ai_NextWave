@@ -28,7 +28,15 @@ st.title('Welcome to NextWave')
 
 # File upload option for the user to upload a file containing product reviews
 
+
+
 # Perform sentiment analysis when the user uploads a file
+st.title('Welcome to NextWave.')
+
+uploaded_file = st.file_uploader("Choose a file")
+if uploaded_file is not None:
+    data = pd.read_csv(uploaded_file)
+    st.write(data.head())
 
     
     # Generate word cloud for selected product
