@@ -71,7 +71,7 @@ if uploaded_file is not None:
                 sentiment_summary = "Mixed"
 
             # Display summary
-            st.write(f"Here is your customer feedback summary: {sentiment_summary}")
+            st.write(f"Your customer feedback overall is {sentiment_summary}")
             st.write(f"Average Rating for {selected_product} : {average_rating:.2f}")
         else:
             st.write("Product not found. Please try again.")
