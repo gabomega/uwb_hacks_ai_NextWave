@@ -21,22 +21,14 @@ st.title('Welcome to NextWave')
 # Upload functionality
 uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
 if uploaded_file is not None:
-    selected_product = st.text_input('Search for a product by asin number')
+    # Function to read jsonl file
     def read_jsonl(file):
         # Read the JSONL file and convert to DataFrame
         return pd.DataFrame([json.loads(line) for line in file])
 
     # Read data
     data = read_jsonl(uploaded_file)
-    
 
-# Check if the user has entered something and if it matches the available drugs
-if selected_product:
-    if selected_product in data['asin'].unique():
-        # Display the selected product information
-        st.write(f"Selected product: {selected_product}")
-    else:
-        st.write("Product not found. Please try again.")
     # Function to preprocess text
     def preprocess_text(text):
         # Tokenize the text
@@ -57,7 +49,7 @@ if selected_product:
     data['sentiments'] = data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
 
     # Generate and display WordCloud
-    wordcloud = WordCloud(width = 800, height = 400).generate(' '.join(data['cleaned_text']))
+    wordcloud = WordCloud(width=800, height=400).generate(' '.join(data['cleaned_text']))
     plt.figure(figsize=(10, 5))
     plt.imshow(wordcloud, interpolation='bilinear')
     plt.axis('off')
@@ -66,14 +58,13 @@ if selected_product:
     # Display sentiment statistics
     st.write(data['sentiments'].describe())
 
+    # Allow user to input ASIN code after uploading file
+    selected_product = st.text_input('Search for a product by ASIN number')
 
-
-
-
-  
-
-
-
-
-
-
+    # Check if the user has entered something and if it matches the available products
+    if selected_product:
+        if selected_product in data['asin'].unique():
+            # Display the selected product information
+            st.write(f"Selected product: {selected_product}")
+        else:
+            st.write("Product not found. Please try again.")
