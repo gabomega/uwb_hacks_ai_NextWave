@@ -39,10 +39,10 @@ if uploaded_file is not None:
             # Display selected product information
             st.write(f"Selected product: {selected_product}")
 
-            # Function to preprocess text
+            # Function to preprocess text and filter out the word "magazine"
             def preprocess_text(text):
                 tokens = word_tokenize(text.lower())
-                filtered_tokens = [token for token in tokens if token not in stopwords.words('english')]
+                filtered_tokens = [token for token in tokens if token not in stopwords.words('english') and token != 'magazine']
                 lemmatizer = WordNetLemmatizer()
                 lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
                 processed_text = ' '.join(lemmatized_tokens)
@@ -66,3 +66,4 @@ if uploaded_file is not None:
             st.write(filtered_data['sentiments'].describe())
         else:
             st.write("Product not found. Please try again.")
+
