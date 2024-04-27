@@ -16,7 +16,7 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 
 # Streamlit UI setup
-st.title('Welcome to NextWave')
+st.title('Welcome to NextWave - your best sentiment analysis tool')
 
 # Upload functionality
 #uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
