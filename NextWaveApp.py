@@ -15,7 +15,18 @@ nltk.download('stopwords')
 nltk.download('wordnet')
 
 # Function to preprocess text
+def preprocess_text(text):
+    # Tokenize the text
+    tokens = word_tokenize(text.lower())
+    # Remove stop words
+    filtered_tokens = [token for token in tokens if token not in stopwords.words('english')]
+    # Lemmatize the tokens
+    lemmatizer = WordNetLemmatizer()
+    lemmatized_tokens = [lemmatizer.lemmatize(token) for token in filtered_tokens]
+    processed_text = ' '.join(lemmatized_tokens)
+    return processed_text
 
+df['cleaned_text'] = df['text'].apply(preprocess_text)
 
 # Function to perform sentiment analysis
 
@@ -31,12 +42,16 @@ st.title('Welcome to NextWave')
 
 
 # Perform sentiment analysis when the user uploads a file
-st.title('Welcome to NextWave.')
 
-uploaded_file = st.file_uploader("Choose a file")
+uploaded_file = st.file_uploader("Upload your Amazon review JSONL file", type='jsonl')
+
 if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file)
-    st.write(data.head())
+    
+    def read_jsonl(file):
+    data = read_jsonl(uploaded_file)
+
+
+
 
     
     # Generate word cloud for selected product
