@@ -17,8 +17,7 @@ nltk.download('wordnet')
 
 # Streamlit UI setup
 st.title('Welcome to NextWave')
-st.write('~ your best sentiment analysis tool')
-
+st.write(f"<h3 style='color:grey; font-size:20px;'>~ your best sentiment analysis tool</h3>", unsafe_allow_html=True)
 # Upload functionality
 #uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
 st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
