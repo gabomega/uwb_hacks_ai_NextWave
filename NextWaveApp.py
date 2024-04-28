@@ -173,12 +173,15 @@ if st.sidebar.button("About", key="about"):
 
 # Set CSS style to increase tab size and remove right padding for title
 st.markdown(
-    """
+     """
     <style>
     .sidebar-content {
         font-size: 18px;
     }
     .stTitle > div {
+        padding-right: 0 !important;
+    }
+    .stTitle {
         padding-right: 0 !important;
     }
     </style>
