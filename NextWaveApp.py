@@ -87,7 +87,7 @@ def process_data(uploaded_file):
 
 def about_section():
     st.title("About NextWave")
- import streamlit as st
+
 
     # Introduction to Sentiment Analysis
     st.header('What is Sentiment Analysis?', anchor=None)
