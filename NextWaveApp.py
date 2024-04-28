@@ -23,11 +23,14 @@ def upload_and_view_results():
     
     # Check if a file is uploaded
     if uploaded_file is not None:
+        # Initialize progress bar
+        progress_bar = st.progress(0)
         # Show uploading status
         status_text = st.empty()
-        process_data(uploaded_file, status_text)
+        status_text.write("Uploading file...")
+        process_data(uploaded_file, status_text, progress_bar)
 
-def process_data(uploaded_file, status_text):
+def process_data(uploaded_file, status_text, progress_bar):
     # Read data
     data = pd.DataFrame([json.loads(line) for line in uploaded_file])
     
