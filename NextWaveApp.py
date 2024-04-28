@@ -17,15 +17,14 @@ nltk.download('wordnet')
 
 # Define page functions
 def upload_and_view_results():
-    col1, col2, col3 = st.columns([3, 1, 0.2])  # Adding a third column for extra spacing on the right
-
+    col1, col2 = st.columns([3, 1])  # Adjust the ratio of the column widths as needed
+    
     with col1:
         st.title('Welcome to NextWave')
-
+    
     with col2:
         logo_path = 'NextWave_Logo.webp'  # Ensure the logo path is correct
-        # Adding padding to the left of the logo for slight left shift
-        st.markdown(f"<img src='{logo_path}' style='width:100%; margin-right:20px;'>", unsafe_allow_html=True)
+        st.image(logo_path, width=100)
     st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader("", type='jsonl')
     
