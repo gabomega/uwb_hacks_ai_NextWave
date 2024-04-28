@@ -15,26 +15,21 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
-# Streamlit UI setup
-st.title('Welcome to NextWave')
-st.write(f"<h3 style='color:grey; font-size:20px;'>~ a Sentiment Analysis Tool for Product Manager</h3>", unsafe_allow_html=True)
-# Upload functionality
-#uploaded_file = st.file_uploader("Upload your customer reviews JSONL file", type='jsonl')
-st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
-uploaded_file = st.file_uploader("", type='jsonl')
+# Define page functions
+def upload_and_view_results():
+    st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("", type='jsonl')
+    if uploaded_file is not None:
+        process_data(uploaded_file)
 
-
-# Check if file is uploaded
-if uploaded_file is not None:
+def process_data(uploaded_file):
     # Read data
     data = pd.DataFrame([json.loads(line) for line in uploaded_file])
     
     # Allow user to input ASIN code
-    #selected_product = st.text_input('Search for a product by ASIN number')
     st.markdown("<p style='font-size:20px; margin: 0; padding: 0;'>Search for a product by ASIN number:</p>", unsafe_allow_html=True)
     selected_product = st.text_input("")
 
-    
     # Check if the user has entered an ASIN
     if selected_product:
         # Filter data based on the entered ASIN
@@ -61,8 +56,6 @@ if uploaded_file is not None:
             sia = SentimentIntensityAnalyzer()
             filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
             
-    
-            
             # Calculate average rating
             average_rating = filtered_data['rating'].mean()
 
@@ -70,14 +63,10 @@ if uploaded_file is not None:
             positive_count = (filtered_data['sentiments'] > 0).sum()
             negative_count = (filtered_data['sentiments'] < 0).sum()
             if positive_count > negative_count:
-                #sentiment_summary = "Positive"
                 sentiment_summary = "<span style='color:green;'>Positive</span>"
-                #sentiment_color = "<span style='color:green;'>Positive</span>"
             elif negative_count >= positive_count:
-                #sentiment_summary = "Negative"
                 sentiment_summary = "<span style='color:red;'>Negative</span>"
-                #sentiment_color = "red"
-            
+
             # Display summary
             st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
             st.write(f"<h3 style='color:black; font-size:24px; padding-bottom: 20px; margin-bottom: 20px;'>Average Rating for Product {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
@@ -91,3 +80,18 @@ if uploaded_file is not None:
         else:
             st.write("Product not found. Please try again.")
 
+def about_section():
+    st.write("This is the about section. Add any information you want to display here.")
+
+# Streamlit UI setup
+st.title('Welcome to NextWave')
+st.write(f"<h3 style='color:grey; font-size:20px;'>~ a Sentiment Analysis Tool for Product Manager</h3>", unsafe_allow_html=True)
+
+# Create navigation menu
+page = st.sidebar.selectbox("Select a page", ["Upload & View Results", "About"])
+
+# Display selected page
+if page == "Upload & View Results":
+    upload_and_view_results()
+elif page == "About":
+    about_section()
