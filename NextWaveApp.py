@@ -81,8 +81,6 @@ def process_data(uploaded_file):
         else:
             st.write("Product not found. Please try again.")
 
-import streamlit as st
-
 def about_section():
     st.title("About NextWave", anchor=None)
     st.header('What is Sentiment Analysis?', anchor=None)
@@ -148,9 +146,6 @@ def about_section():
     # st.text_input("Your Email")
     # st.text_area("Your Message")
     # st.button("Submit")
-
-
-
 
 # Streamlit UI setup
 #st.title('Welcome to NextWave')
