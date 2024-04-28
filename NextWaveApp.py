@@ -15,6 +15,32 @@ nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
 
+def add_css():
+    # Use st.markdown to add custom styles
+    st.markdown("""
+    <style>
+    /* Set the background of the entire page */
+    body {
+        color: #fff;
+        background-color: #4F8BF9; /* Change the hex code to your desired color */
+        background-image: url('https://www.example.com/your-background-image.jpg'); /* Add your image URL */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+    /* You can also customize Streamlit's default elements to better fit your new background */
+    .stButton>button {
+        color: #4F8BF9;
+        border: 2px solid white;
+        background-color: white;
+    }
+    .css-18e3th9 {
+        background-color: rgba(255, 255, 255, 0.8); /* This adds transparency to the main content block, adjust opacity as needed */
+        border-radius: 10px; /* Optional: rounds the corners of the main content block */
+        padding: 2rem; /* Adjusts the padding around the content */
+    }
+    </style>
+    """, unsafe_allow_html=True)
 # Define page functions
 def upload_and_view_results():
     st.title('Welcome to NextWave')
@@ -160,6 +186,8 @@ if st.sidebar.button("About"):
 
 # Display selected page
 if page:
+    add_css()
     upload_and_view_results()
 else:
+    add_css()
     about_section()
