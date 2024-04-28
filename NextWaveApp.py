@@ -89,65 +89,69 @@ def process_data(uploaded_file, status_text):
         else:
             st.write("Product not found. Please try again.")
 
-import streamlit as st
 
 def about_section():
     st.title("About NextWave")
 
-    st.header('What is Sentiment Analysis?')
+    # Introduction to Sentiment Analysis
+    st.header('What is Sentiment Analysis?', anchor=None)
     st.markdown("""
-    <div style="color:midnightblue;">
+    <p style="color:midnightblue;">
     Sentiment Analysis is a powerful tool from the field of Natural Language Processing (NLP) that interprets and classifies emotions expressed in textual data using machine learning techniques. By analyzing words and phrases within text, sentiment analysis helps determine whether the underlying sentiment is positive, negative, or neutral.
-    </div>
+    </p>
     """, unsafe_allow_html=True)
 
-    st.header('How Sentiment Analysis is Used in Business')
+    # Using headers and subheaders with colored text to describe business applications
+    st.header('How Sentiment Analysis is Used in Business', anchor=None)
 
-    # Using expanders to organize content better and make the page cleaner
-    with st.expander("Enhancing Customer Experience"):
-        st.markdown("""
-        <div style="color:darkgreen;">
-        Companies use sentiment analysis to monitor social media, customer reviews, and feedback to gauge public opinion about their products and services. This real-time insight allows businesses to swiftly address concerns, improve product offerings, and enhance overall customer satisfaction.
-        </div>
-        """, unsafe_allow_html=True)
+    st.subheader('Enhancing Customer Experience', anchor=None)
+    st.markdown("""
+    <p style="color:darkgreen;">
+    Companies use sentiment analysis to monitor social media, customer reviews, and feedback to gauge public opinion about their products and services. This real-time insight allows businesses to swiftly address concerns, improve product offerings, and enhance overall customer satisfaction.
+    </p>
+    """, unsafe_allow_html=True)
 
-    with st.expander("Market Research and Analysis"):
-        st.markdown("""
-        <div style="color:darkred;">
-        Sentiment analysis provides an in-depth understanding of market trends and consumer preferences by analyzing vast amounts of data from blogs, forums, and news articles. This helps businesses to stay ahead of the curve, tailor marketing strategies, and meet consumer demands effectively.
-        </div>
-        """, unsafe_allow_html=True)
+    st.subheader('Market Research and Analysis', anchor=None)
+    st.markdown("""
+    <p style="color:darkred;">
+    Sentiment analysis provides an in-depth understanding of market trends and consumer preferences by analyzing vast amounts of data from blogs, forums, and news articles. This helps businesses to stay ahead of the curve, tailor marketing strategies, and meet consumer demands effectively.
+    </p>
+    """, unsafe_allow_html=True)
 
-    with st.expander("Employee Feedback and Engagement"):
-        st.markdown("""
-        <div style="color:purple;">
-        Internally, sentiment analysis is employed to understand employee feedback, measure engagement levels, and foster a positive work environment. This can lead to more effective HR strategies, improved employee retention rates, and a better workplace culture.
-        </div>
-        """, unsafe_allow_html=True)
+    st.subheader('Employee Feedback and Engagement', anchor=None)
+    st.markdown("""
+    <p style="color:purple;">
+    Internally, sentiment analysis is employed to understand employee feedback, measure engagement levels, and foster a positive work environment. This can lead to more effective HR strategies, improved employee retention rates, and a better workplace culture.
+    </p>
+    """, unsafe_allow_html=True)
 
-    with st.expander("Brand Monitoring and Management"):
-        st.markdown("""
-        <div style="color:maroon;">
-        By continuously monitoring online conversations, sentiment analysis helps businesses protect and enhance their brand image. Companies can identify and respond to negative sentiments swiftly, mitigating potential damage and reinforcing positive perceptions in the marketplace.
-        </div>
-        """, unsafe_allow_html=True)
+    st.subheader('Brand Monitoring and Management', anchor=None)
+    st.markdown("""
+    <p style="color:maroon;">
+    By continuously monitoring online conversations, sentiment analysis helps businesses protect and enhance their brand image. Companies can identify and respond to negative sentiments swiftly, mitigating potential damage and reinforcing positive perceptions in the marketplace.
+    </p>
+    """, unsafe_allow_html=True)
 
-    with st.expander("Competitive Analysis"):
-        st.markdown("""
-        <div style="color:navy;">
-        Sentiment analysis can provide insights into how consumers feel about competitors’ products and services. This intelligence is crucial for benchmarking, strategic planning, and maintaining competitiveness in the market.
-        </div>
-        """, unsafe_allow_html=True)
+    st.subheader('Competitive Analysis', anchor=None)
+    st.markdown("""
+    <p style="color:navy;">
+    Sentiment analysis can provide insights into how consumers feel about competitors’ products and services. This intelligence is crucial for benchmarking, strategic planning, and maintaining competitiveness in the market.
+    </p>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
-    <div style="color:black;">
+    <p style="color:black;">
     By harnessing the power of sentiment analysis, businesses can derive actionable insights from unstructured text data, leading to informed decision-making and a significant competitive advantage.
-    </div>
+    </p>
     """, unsafe_allow_html=True)
 
     # Add a footer or closing remark
     st.markdown("""
-    <hr style="border-top:
+    <hr style="border-top: 2px solid gray;">
+    <p style="color:gray;">
+    Thank you for visiting our page. For more information, feel free to contact us.
+    </p>
+    """, unsafe_allow_html=True)
 
 
 
