@@ -1,6 +1,39 @@
-div.css-1r6slb0.e1tzin5v2 {
+/* style.css */
+.content-container {
     background-color: #EEEEEE;
     border: 2px solid #CCCCCC;
     padding: 5% 5% 5% 10%;
     border-radius: 5px;
 }
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.custom-footer {
+    border-top: 2px solid gray;
+    color: gray;
+}
+
+.custom-header {
+    color: midnightblue;
+}
+
+.custom-subheader {
+    padding: 5px;
+    margin-top: 20px;
+}
+
+.positive {
+    color: green;
+}
+
+.negative {
+    color: red;
+}
+
+.neutral {
+    color: navy;
+}
+
