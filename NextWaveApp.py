@@ -171,6 +171,26 @@ if st.sidebar.button("Upload & View Results", key="upload_view"):
 if st.sidebar.button("About", key="about"):
     page = False
 
+st.markdown(
+    """
+    <style>
+    .sidebar-content {
+        font-size: 18px;
+    }
+    .stTitle > div {
+        padding-right: 0 !important;
+    }
+    .stTitle {
+        padding-right: 0 !important;
+    }
+    .stImage img {
+        padding-left: 0 !important;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
+
 # Display selected page
 if page:
     upload_and_view_results()
