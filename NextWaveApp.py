@@ -80,7 +80,9 @@ def process_data(uploaded_file):
         else:
             st.write("Product not found. Please try again.")
 
+# define the about section page
 def about_section():
+    st.title("About NextWave")
     st.write("This is the about section. Add any information you want to display here.")
 
 # Streamlit UI setup
