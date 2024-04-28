@@ -17,9 +17,15 @@ nltk.download('wordnet')
 
 # Define page functions
 def upload_and_view_results():
-    st.title('Welcome to NextWave')
-    logo_path = 'NextWave_Logo.webp'  # The path to your webp image file
-    st.image(logo_path, width=100)
+    # Use columns to arrange the title and logo side by side
+    col1, col2 = st.columns([3, 1])  # Adjust the ratio of the column widths as needed
+    
+    with col1:
+        st.title('Welcome to NextWave')
+    
+    with col2:
+        logo_path = 'NextWave_Logo.webp'  # Ensure the logo path is correct
+        st.image(logo_path, width=100) 
     st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader("", type='jsonl')
     
