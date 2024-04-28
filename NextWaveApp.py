@@ -87,11 +87,13 @@ def about_section():
 st.title('Welcome to NextWave')
 st.write(f"<h3 style='color:grey; font-size:20px;'>~ a Sentiment Analysis Tool for Product Manager</h3>", unsafe_allow_html=True)
 
-# Create navigation menu
-page = st.sidebar.selectbox("Select a page", ["Upload & View Results", "About"])
+# Create navigation menu with buttons
+st.sidebar.header("Select a page")
+page = st.sidebar.button("Upload & View Results")
+about_button = st.sidebar.button("About")
 
 # Display selected page
-if page == "Upload & View Results":
+if page:
     upload_and_view_results()
-elif page == "About":
+elif about_button:
     about_section()
