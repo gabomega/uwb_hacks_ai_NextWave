@@ -19,7 +19,8 @@ nltk.download('wordnet')
 def upload_and_view_results():
     st.title('Welcome to NextWave')
     st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("", type='jsonl', label="Uploading file...")
+    st.markdown("<p style='font-size:16px; margin-top: 5px; margin-bottom: 20px;'>Uploading file...</p>", unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("", type='jsonl')
     
     # Check if a file is uploaded
     if uploaded_file is not None:
