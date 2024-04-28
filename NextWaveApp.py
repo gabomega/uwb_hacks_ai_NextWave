@@ -25,7 +25,6 @@ def upload_and_view_results():
     if uploaded_file is not None:
         # Show uploading status
         status_text = st.empty()
-        #status_text.write("Uploading file...")
         process_data(uploaded_file, status_text)
 
 def process_data(uploaded_file, status_text):
@@ -58,34 +57,34 @@ def process_data(uploaded_file, status_text):
             # Apply preprocessing to the review text
             filtered_data['cleaned_text'] = filtered_data['text'].apply(preprocess_text)
             
-            # Sentiment analysis
-            sia = SentimentIntensityAnalyzer()
-            filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
-            
-            # Calculate average rating
-            average_rating = filtered_data['rating'].mean()
+            # Display spinner while analyzing data
+            with st.spinner('Analyzing data...'):
+                # Sentiment analysis
+                sia = SentimentIntensityAnalyzer()
+                filtered_data['sentiments'] = filtered_data['cleaned_text'].apply(lambda x: sia.polarity_scores(x)['compound'])
+                
+                # Calculate average rating
+                average_rating = filtered_data['rating'].mean()
 
-            # Determine if reviews are mostly positive or negative
-            positive_count = (filtered_data['sentiments'] > 0).sum()
-            negative_count = (filtered_data['sentiments'] < 0).sum()
-            if positive_count > negative_count:
-                sentiment_summary = "<span style='color:green;'>Positive</span>"
-            elif negative_count >= positive_count:
-                sentiment_summary = "<span style='color:red;'>Negative</span>"
+                # Determine if reviews are mostly positive or negative
+                positive_count = (filtered_data['sentiments'] > 0).sum()
+                negative_count = (filtered_data['sentiments'] < 0).sum()
+                if positive_count > negative_count:
+                    sentiment_summary = "<span style='color:green;'>Positive</span>"
+                elif negative_count >= positive_count:
+                    sentiment_summary = "<span style='color:red;'>Negative</span>"
 
-            # Display summary
-            st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
-            st.write(f"<h3 style='color:black; font-size:24px; padding-bottom: 20px; margin-bottom: 20px;'>Average Rating for Product {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
-            st.write(f"<h3 style='color:black; font-size:24px;'>Here is the Word Cloud summary of your customer experience:</h3>", unsafe_allow_html=True)
-            # Generate and display WordCloud
-            wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
-            plt.figure(figsize=(10, 5))
-            plt.imshow(wordcloud, interpolation='bilinear')
-            plt.axis('off')
-            st.pyplot(plt)
-            
-            # Update status text to indicate completion
-            #status_text.write("Data processing complete!")
+                # Display summary
+                st.markdown(f"<h3 style='color:black; font-size:24px;'>Your customer feedback overall is {sentiment_summary}</h3>", unsafe_allow_html=True)
+                st.write(f"<h3 style='color:black; font-size:24px; padding-bottom: 20px; margin-bottom: 20px;'>Average Rating for Product {selected_product}: {average_rating:.2f}</h3>", unsafe_allow_html=True)
+                st.write(f"<h3 style='color:black; font-size:24px;'>Here is the Word Cloud summary of your customer experience:</h3>", unsafe_allow_html=True)
+                # Generate and display WordCloud
+                wordcloud = WordCloud(width=800, height=400).generate(' '.join(filtered_data['cleaned_text']))
+                plt.figure(figsize=(10, 5))
+                plt.imshow(wordcloud, interpolation='bilinear')
+                plt.axis('off')
+                st.pyplot(plt)
+                
         else:
             st.write("Product not found. Please try again.")
 
