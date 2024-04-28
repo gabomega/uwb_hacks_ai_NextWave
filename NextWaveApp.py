@@ -19,18 +19,13 @@ nltk.download('wordnet')
 def upload_and_view_results():
     st.title('Welcome to NextWave')
     st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
-    uploaded_file = st.file_uploader("", type='jsonl')
+    uploaded_file = st.file_uploader("", type='jsonl', label="Uploading file...")
     
     # Check if a file is uploaded
     if uploaded_file is not None:
-        # Initialize progress bar
-        progress_bar = st.progress(0)
-        # Show uploading status
-        status_text = st.empty()
-        status_text.write("Uploading file...")
-        process_data(uploaded_file, status_text, progress_bar)
+        process_data(uploaded_file)
 
-def process_data(uploaded_file, status_text, progress_bar):
+def process_data(uploaded_file):
     # Read data
     data = pd.DataFrame([json.loads(line) for line in uploaded_file])
     
