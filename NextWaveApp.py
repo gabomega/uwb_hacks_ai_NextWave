@@ -133,7 +133,7 @@ def about_section():
     """, unsafe_allow_html=True)
 
     st.markdown("""
-    <p style="color:black;">
+    <p style="color:midnightblue;">
     By harnessing the power of sentiment analysis, businesses can derive actionable insights from unstructured text data, leading to informed decision-making and a significant competitive advantage.
     </p>
     """, unsafe_allow_html=True)
