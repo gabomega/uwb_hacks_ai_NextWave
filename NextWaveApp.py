@@ -17,6 +17,7 @@ nltk.download('wordnet')
 
 # Define page functions
 def upload_and_view_results():
+    st.title('Welcome to NextWave')
     st.markdown(f"<h3 style='font-size:20px; margin: 0; padding: 0;'>Upload your customer reviews JSONL file:</h3>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader("", type='jsonl')
     if uploaded_file is not None:
@@ -86,7 +87,7 @@ def about_section():
     st.write("This is the about section. Add any information you want to display here.")
 
 # Streamlit UI setup
-st.title('Welcome to NextWave')
+#st.title('Welcome to NextWave')
 st.write(f"<h3 style='color:grey; font-size:20px;'>~ a Sentiment Analysis Tool for Product Manager</h3>", unsafe_allow_html=True)
 
 # Create navigation menu with buttons
