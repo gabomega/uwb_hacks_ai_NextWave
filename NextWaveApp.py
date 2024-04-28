@@ -99,35 +99,35 @@ def about_section():
 
     st.subheader('Enhancing Customer Experience', anchor=None)
     st.markdown("""
-    <p style="color:darkgreen;">
+    <p style="color:midnightblue;">
     Companies use sentiment analysis to monitor social media, customer reviews, and feedback to gauge public opinion about their products and services. This real-time insight allows businesses to swiftly address concerns, improve product offerings, and enhance overall customer satisfaction.
     </p>
     """, unsafe_allow_html=True)
 
     st.subheader('Market Research and Analysis', anchor=None)
     st.markdown("""
-    <p style="color:darkred;">
+    <p style="color:midnightblue;">
     Sentiment analysis provides an in-depth understanding of market trends and consumer preferences by analyzing vast amounts of data from blogs, forums, and news articles. This helps businesses to stay ahead of the curve, tailor marketing strategies, and meet consumer demands effectively.
     </p>
     """, unsafe_allow_html=True)
 
     st.subheader('Employee Feedback and Engagement', anchor=None)
     st.markdown("""
-    <p style="color:purple;">
+    <p style="color:midnightblue;">
     Internally, sentiment analysis is employed to understand employee feedback, measure engagement levels, and foster a positive work environment. This can lead to more effective HR strategies, improved employee retention rates, and a better workplace culture.
     </p>
     """, unsafe_allow_html=True)
 
     st.subheader('Brand Monitoring and Management', anchor=None)
     st.markdown("""
-    <p style="color:maroon;">
+    <p style="color:midnightblue;">
     By continuously monitoring online conversations, sentiment analysis helps businesses protect and enhance their brand image. Companies can identify and respond to negative sentiments swiftly, mitigating potential damage and reinforcing positive perceptions in the marketplace.
     </p>
     """, unsafe_allow_html=True)
 
     st.subheader('Competitive Analysis', anchor=None)
     st.markdown("""
-    <p style="color:navy;">
+    <p style="color:midnightblue;">
     Sentiment analysis can provide insights into how consumers feel about competitors’ products and services. This intelligence is crucial for benchmarking, strategic planning, and maintaining competitiveness in the market.
     </p>
     """, unsafe_allow_html=True)
