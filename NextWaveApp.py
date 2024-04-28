@@ -171,24 +171,6 @@ if st.sidebar.button("Upload & View Results", key="upload_view"):
 if st.sidebar.button("About", key="about"):
     page = False
 
-# Set CSS style to increase tab size and remove right padding for title
-st.markdown(
-     """
-    <style>
-    .sidebar-content {
-        font-size: 18px;
-    }
-    .stTitle > div {
-        padding-right: 0 !important;
-    }
-    .stTitle {
-        padding-right: 0 !important;
-    }
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 # Display selected page
 if page:
     upload_and_view_results()
