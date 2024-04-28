@@ -24,19 +24,17 @@ def upload_and_view_results():
     # Check if a file is uploaded
     if uploaded_file is not None:
         # Show uploading status
-        with st.status("Uploading file..."):
-            process_data(uploaded_file)
+        status_text = st.empty()
+        status_text.write("Uploading file...")
+        process_data(uploaded_file, status_text)
 
-def process_data(uploaded_file):
+def process_data(uploaded_file, status_text):
     # Read data
     data = pd.DataFrame([json.loads(line) for line in uploaded_file])
     
     # Allow user to input ASIN code
     st.markdown("<p style='font-size:20px; margin: 0; padding: 0;'>Enter ASIN to search:</p>", unsafe_allow_html=True)
     selected_product = st.text_input("ASIN", placeholder="Enter ASIN code here")
-    
-    # Initialize status container for data processing
-    status = st.status("Processing data...")
     
     # Check if the user has entered an ASIN
     if selected_product:
@@ -86,8 +84,8 @@ def process_data(uploaded_file):
             plt.axis('off')
             st.pyplot(plt)
             
-            # Update status container to indicate completion
-            status.update("Data processing complete!", state="complete")
+            # Update status text to indicate completion
+            status_text.write("Data processing complete!")
         else:
             st.write("Product not found. Please try again.")
 
@@ -145,6 +143,15 @@ def about_section():
     By harnessing the power of sentiment analysis, businesses can derive actionable insights from unstructured text data, leading to informed decision-making and a significant competitive advantage.
     </p>
     """, unsafe_allow_html=True)
+
+    # Add a footer or closing remark
+    st.markdown("""
+    <hr style="border-top: 2px solid gray;">
+    <p style="color:gray;">
+    Thank you for visiting our page. For more information, feel free to contact us.
+    </p>
+    """, unsafe_allow_html=True)
+
 
 # Streamlit UI setup
 # Set default page to True to display "Upload & View Results" page when the app is first loaded
