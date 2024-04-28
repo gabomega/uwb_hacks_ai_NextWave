@@ -164,8 +164,6 @@ if st.sidebar.button("About"):
 
 # Display selected page
 if page:
-    add_css()
     upload_and_view_results()
 else:
-    add_css()
     about_section()
