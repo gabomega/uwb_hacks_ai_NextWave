@@ -21,7 +21,7 @@ def upload_and_view_results():
     
     with col1:
         st.title('Welcome to NextWave')
-    
+        st.write('~ A tool for Product Manager and Business owner')
     with col2:
         logo_path = 'NextWave_Logo.webp'  # Ensure the logo path is correct
         st.image(logo_path, width=150)
