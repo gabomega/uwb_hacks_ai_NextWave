@@ -25,7 +25,7 @@ def upload_and_view_results():
     if uploaded_file is not None:
         # Show uploading status
         status_text = st.empty()
-        status_text.write("Uploading file...")
+        #status_text.write("Uploading file...")
         process_data(uploaded_file, status_text)
 
 def process_data(uploaded_file, status_text):
@@ -85,7 +85,7 @@ def process_data(uploaded_file, status_text):
             st.pyplot(plt)
             
             # Update status text to indicate completion
-            status_text.write("Data processing complete!")
+            #status_text.write("Data processing complete!")
         else:
             st.write("Product not found. Please try again.")
 
